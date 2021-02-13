@@ -7,15 +7,31 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel: ViewModel() {
-    var homeConfig by mutableStateOf(HomeConfig(
+    private val homeConfig = HomeConfig(
             darkTheme = false,
             fabPosition = FabPosition.Center
-        ))
+    )
+
+    var fabPosition by mutableStateOf(homeConfig.fabPosition)
+    var darkTheme by mutableStateOf(homeConfig.darkTheme)
+
+    private fun onChangeAndSave(){
+        // save("homeConfig", homeConfig.toJson())
+    }
 
     fun changeDarkTheme(darkTheme: Boolean){
-        homeConfig = HomeConfig(darkTheme, homeConfig.fabPosition)
+        if(this.darkTheme != darkTheme){
+            this.darkTheme = darkTheme
+            homeConfig.darkTheme = darkTheme
+            onChangeAndSave()
+        }
     }
+
     fun changeFabPosition(fabPosition: FabPosition){
-        homeConfig = HomeConfig(homeConfig.darkTheme, fabPosition)
+        if(this.fabPosition != fabPosition){
+            this.fabPosition = fabPosition
+            homeConfig.fabPosition = fabPosition
+            onChangeAndSave()
+        }
     }
 }

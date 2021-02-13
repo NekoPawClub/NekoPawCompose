@@ -17,8 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModel: HomeViewModel by viewModels()
+        println("重绘 MainActivity onCreate")
         setContent {
-            NekoPawTheme(darkTheme = viewModel.homeConfig.darkTheme) {
+            NekoPawTheme(darkTheme = viewModel.darkTheme) {
+                println("重绘 NekoPawTheme")
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     HomePage()

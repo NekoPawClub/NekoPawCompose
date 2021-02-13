@@ -12,19 +12,20 @@ import androidx.compose.ui.viewinterop.viewModel
 @Composable
 fun HomePage() {
     val viewModel: HomeViewModel = viewModel()
+    println("重绘 HomePage")
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
                 Icon(Icons.Outlined.Search)
             }
         },
-        floatingActionButtonPosition = viewModel.homeConfig.fabPosition,
+        floatingActionButtonPosition = viewModel.fabPosition,
         bodyContent = {
             Column(modifier = Modifier.padding(10.dp)) {
                 Row {
                     Text(text = "暗色模式")
                     Switch(
-                        checked = viewModel.homeConfig.darkTheme,
+                        checked = viewModel.darkTheme,
                         onCheckedChange = {
                             viewModel.changeDarkTheme(it)
                         })
@@ -34,7 +35,7 @@ fun HomePage() {
                 Row {
                     Text(text = "搜索键位置")
                     Switch(
-                        checked = viewModel.homeConfig.fabPosition == FabPosition.End,
+                        checked = viewModel.fabPosition == FabPosition.End,
                         onCheckedChange = {
                             viewModel.changeFabPosition(if (it) FabPosition.End else FabPosition.Center)
                         })
