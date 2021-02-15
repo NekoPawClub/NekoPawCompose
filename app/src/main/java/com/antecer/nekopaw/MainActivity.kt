@@ -2,7 +2,6 @@ package com.antecer.nekopaw
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -14,18 +13,16 @@ import com.antecer.nekopaw.ui.home.HomePage
 import com.antecer.nekopaw.ui.home.HomeViewModel
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel by viewModels<HomeViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         println("重绘 MainActivity onCreate")
 
         setContent(null) {
-            NekoPawTheme(darkTheme = viewModel.darkTheme) {
+            NekoPawTheme(darkTheme = HomeViewModel.ins.darkTheme) {
                 println("重绘 NekoPawTheme")
 
                 Surface(color = MaterialTheme.colors.background) {
-                    HomePage(viewModel)
+                    HomePage()
                 }
             }
         }
@@ -37,5 +34,13 @@ class MainActivity : AppCompatActivity() {
 fun DefaultPreview() {
     NekoPawTheme {
         BookCase()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview1(){
+    NekoPawTheme {
+        HomePage()
     }
 }

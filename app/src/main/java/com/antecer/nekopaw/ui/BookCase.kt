@@ -11,9 +11,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,26 +19,21 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.imageFromResource
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.viewinterop.viewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.antecer.nekopaw.MainActivity
+import androidx.lifecycle.*
 import com.antecer.nekopaw.R
-import com.antecer.nekopaw.api.JsEngine
-import kotlinx.coroutines.Dispatchers.IO
 
 class HelloViewModel : ViewModel() {
+    companion object {
+        val ins: HelloViewModel by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            HelloViewModel()
+        }
+    }
 
     // LiveData holds state which is observed by the UI
     // (state flows down from ViewModel)
@@ -55,7 +48,7 @@ class HelloViewModel : ViewModel() {
 }
 
 @Composable
-fun BookCase(helloViewModel: HelloViewModel = viewModel()) {
+fun BookCase(helloViewModel: HelloViewModel = HelloViewModel.ins) {
     val bookList = arrayListOf<Map<String, String>>()
     for (i in 1..10) {
         bookList.add(

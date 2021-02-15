@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomePage(viewModel: HomeViewModel) {
+fun HomePage(viewModel: HomeViewModel = HomeViewModel.ins) {
     println("重绘 HomePage")
     Scaffold(
         floatingActionButton = {
