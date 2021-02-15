@@ -43,8 +43,7 @@ class WebHttpServer(port: Int) : NanoHTTPD(port) {
                 "POST" -> {
                     val files = HashMap<String, String>()
                     session.parseBody(files)
-                    val postData = files["postData"]
-
+//                    val postData = files["postData"]
 //                    when (pathname) {
 //                        "/saveSource" -> returnData = SourceController.saveSource(postData)
 //                        "/saveSources" -> returnData = SourceController.saveSources(postData)
@@ -53,7 +52,7 @@ class WebHttpServer(port: Int) : NanoHTTPD(port) {
 //                    }
                 }
                 "GET" -> {
-                    val parameters = session.parameters
+//                    val parameters = session.parameters
 //                    when (pathname) {
 //                        "/getSource" -> returnData = SourceController.getSource(parameters)
 //                        "/getSources" -> returnData = SourceController.sources

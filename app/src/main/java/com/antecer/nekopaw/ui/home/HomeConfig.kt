@@ -1,4 +1,4 @@
-package com.nekopawclub.nekopawcompose.home
+package com.antecer.nekopaw.ui.home
 
 import androidx.compose.material.FabPosition
 import androidx.compose.runtime.Stable

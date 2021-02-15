@@ -1,9 +1,11 @@
 package com.antecer.nekopaw.ui
 
+import android.content.res.Resources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -18,13 +20,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -88,15 +93,18 @@ fun BookCase(helloViewModel: HelloViewModel = viewModel()) {
                     },
                     //leadingIcon = { Icon(Icons.Rounded.Search) },
                     trailingIcon = {
-                        Icon(Icons.Filled.Search, Modifier.clickable {
+                        Icon(Icons.Filled.Search, null, Modifier.clickable {
                             helloViewModel.onNameChanged(inputValue.value.text)
                         })
                     },
                 )
 
-                Text(helloViewModel.name.value?:"",Modifier.fillMaxSize().constrainAs(createRefs().component2()) {
-                    top.linkTo(parent.top)
-                },)
+                Text(
+                    helloViewModel.name.value ?: "",
+                    Modifier.fillMaxSize().constrainAs(createRefs().component2()) {
+                        top.linkTo(parent.top)
+                    },
+                )
             }
         },
     ) {
@@ -111,16 +119,17 @@ fun BookCase(helloViewModel: HelloViewModel = viewModel()) {
 
 @Composable
 fun BookCard(book: Map<String, String>) {
-    val cover = imageResource(id = R.raw.default_cover)
-    val titleSize = TextUnit.Em(6)
-    val infoSize = TextUnit.Em(4)
-    val tipSize = TextUnit.Em(3)
+    val cover = imageFromResource(Resources.getSystem(), resId = R.raw.default_cover)
+    val titleSize = 6.em
+    val infoSize = 4.em
+    val tipSize = 3.em
     Row(
         Modifier.height(106.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             cover,
+            null,
             Modifier.fillMaxHeight().clip(RoundedCornerShape(5.dp)).clickable { println("你点击了封面") }
         )
         Spacer(Modifier.width(3.dp))
@@ -130,9 +139,9 @@ fun BookCard(book: Map<String, String>) {
             val (title, tips, author, node, mark, markTime, last, lastTime) = createRefs()
             Text(
                 book["title"] ?: "",
-                Modifier.absolutePadding(2.dp).constrainAs(title) {},
-                Color.Black,
-                titleSize,
+                modifier = Modifier.absolutePadding(2.dp).constrainAs(title) {},
+                color = Color.Black,
+                fontSize = titleSize,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -152,7 +161,7 @@ fun BookCard(book: Map<String, String>) {
                 Modifier.constrainAs(author) { start.linkTo(title.start);top.linkTo(title.bottom) },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Filled.AccountBox)
+                Icon(Icons.Filled.AccountBox, null)
                 Text(book["author"] ?: "", fontSize = infoSize, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
             Text(
@@ -169,7 +178,7 @@ fun BookCard(book: Map<String, String>) {
                 Modifier.constrainAs(mark) { start.linkTo(author.start); top.linkTo(author.bottom) },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Filled.MoveToInbox)
+                Icon(Icons.Filled.MoveToInbox, null)
                 Text(book["mark"] ?: "", fontSize = infoSize, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
             Text(
@@ -186,7 +195,7 @@ fun BookCard(book: Map<String, String>) {
                 Modifier.constrainAs(last) { start.linkTo(mark.start); top.linkTo(mark.bottom) },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(Icons.Filled.Satellite)
+                Icon(Icons.Filled.Satellite, null)
                 Text(book["last"] ?: "", fontSize = infoSize, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
             Text(

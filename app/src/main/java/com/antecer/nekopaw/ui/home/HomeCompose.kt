@@ -1,4 +1,4 @@
-package com.nekopawclub.nekopawcompose.home
+package com.antecer.nekopaw.ui.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -7,16 +7,14 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
 
 @Composable
-fun HomePage() {
-    val viewModel: HomeViewModel = viewModel()
+fun HomePage(viewModel: HomeViewModel) {
     println("重绘 HomePage")
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
-                Icon(Icons.Outlined.Search)
+                Icon(Icons.Outlined.Search, null)
             }
         },
         floatingActionButtonPosition = viewModel.fabPosition,
@@ -28,8 +26,8 @@ fun HomePage() {
                         checked = viewModel.darkTheme,
                         onCheckedChange = {
                             viewModel.changeDarkTheme(it)
-                        })
-
+                        }
+                    )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Row {
@@ -38,7 +36,8 @@ fun HomePage() {
                         checked = viewModel.fabPosition == FabPosition.End,
                         onCheckedChange = {
                             viewModel.changeFabPosition(if (it) FabPosition.End else FabPosition.Center)
-                        })
+                        }
+                    )
                 }
             }
         }

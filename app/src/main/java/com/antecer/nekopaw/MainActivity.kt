@@ -1,29 +1,31 @@
 package com.antecer.nekopaw
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import com.antecer.nekopaw.ui.BookCase
 import com.antecer.nekopaw.ui.theme.NekoPawTheme
-import com.nekopawclub.nekopawcompose.home.HomePage
-import com.nekopawclub.nekopawcompose.home.HomeViewModel
+import com.antecer.nekopaw.ui.home.HomePage
+import com.antecer.nekopaw.ui.home.HomeViewModel
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel by viewModels<HomeViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel: HomeViewModel by viewModels()
         println("重绘 MainActivity onCreate")
-        setContent {
+
+        setContent(null) {
             NekoPawTheme(darkTheme = viewModel.darkTheme) {
                 println("重绘 NekoPawTheme")
-                // A surface container using the 'background' color from the theme
+
                 Surface(color = MaterialTheme.colors.background) {
-                    HomePage()
+                    HomePage(viewModel)
                 }
             }
         }
