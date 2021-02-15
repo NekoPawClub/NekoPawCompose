@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.api
+package com.nekopawclub.nekopaw.api
 
 import android.util.Log
 import com.eclipsesource.v8.V8

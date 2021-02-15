@@ -1,7 +1,7 @@
-package com.antecer.nekopaw.web
+package com.nekopawclub.nekopaw.web
 
 import android.content.res.AssetManager
-import com.antecer.nekopaw.MainActivity
+import com.nekopawclub.nekopaw.MainActivity
 import fi.iki.elonen.NanoHTTPD
 import java.io.File
 import java.io.IOException

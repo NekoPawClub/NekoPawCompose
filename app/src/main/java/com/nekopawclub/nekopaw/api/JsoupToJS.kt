@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.api
+package com.nekopawclub.nekopaw.api
 
 import com.eclipsesource.v8.V8
 import io.alicorn.v8.V8JavaAdapter

@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.ui.home
+package com.nekopawclub.nekopaw.ui.home
 
 import androidx.compose.material.FabPosition
 import androidx.compose.runtime.getValue

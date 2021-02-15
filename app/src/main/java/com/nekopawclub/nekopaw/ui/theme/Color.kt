@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.ui.theme
+package com.nekopawclub.nekopaw.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

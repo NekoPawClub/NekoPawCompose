@@ -1,4 +1,4 @@
-package com.antecer.nekopaw
+package com.nekopawclub.nekopaw
 
 import org.junit.Test
 

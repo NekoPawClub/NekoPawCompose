@@ -1,6 +1,6 @@
-package com.antecer.nekopaw.web
+package com.nekopawclub.nekopaw.web
 
-import com.antecer.nekopaw.api.JsEngine
+import com.nekopawclub.nekopaw.api.JsEngine
 import kotlinx.coroutines.CoroutineScope
 import fi.iki.elonen.NanoHTTPD
 import fi.iki.elonen.NanoWSD

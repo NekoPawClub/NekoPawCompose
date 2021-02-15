@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.web
+package com.nekopawclub.nekopaw.web
 
 import fi.iki.elonen.NanoWSD
 

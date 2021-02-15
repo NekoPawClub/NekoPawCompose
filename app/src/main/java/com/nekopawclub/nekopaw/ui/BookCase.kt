@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.ui
+package com.nekopawclub.nekopaw.ui
 
 import android.content.res.Resources
 import androidx.compose.foundation.Image
@@ -26,7 +26,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.lifecycle.*
-import com.antecer.nekopaw.R
+import com.nekopawclub.nekopaw.R
 
 class HelloViewModel : ViewModel() {
     companion object {

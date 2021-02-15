@@ -1,4 +1,4 @@
-package com.antecer.nekopaw
+package com.nekopawclub.nekopaw
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -7,10 +7,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.antecer.nekopaw.ui.BookCase
-import com.antecer.nekopaw.ui.theme.NekoPawTheme
-import com.antecer.nekopaw.ui.home.HomePage
-import com.antecer.nekopaw.ui.home.HomeViewModel
+import com.nekopawclub.nekopaw.ui.BookCase
+import com.nekopawclub.nekopaw.ui.theme.NekoPawTheme
+import com.nekopawclub.nekopaw.ui.home.HomePage
+import com.nekopawclub.nekopaw.ui.home.HomeViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.antecer.nekopaw.api
+package com.nekopawclub.nekopaw.api
 
 import android.os.SystemClock.sleep
 import android.util.Log
