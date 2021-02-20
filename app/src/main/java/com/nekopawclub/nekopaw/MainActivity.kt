@@ -20,10 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContent(null) {
             NekoPawTheme(darkTheme = HomeViewModel.ins.darkTheme) {
                 println("重绘 NekoPawTheme")
+                BookCase()
 
-                Surface(color = MaterialTheme.colors.background) {
-                    HomePage()
-                }
+//                Surface(color = MaterialTheme.colors.background) {
+//                    HomePage()
+//                }
             }
         }
     }
@@ -37,7 +38,7 @@ fun DefaultPreview() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun Preview1(){
     NekoPawTheme {
