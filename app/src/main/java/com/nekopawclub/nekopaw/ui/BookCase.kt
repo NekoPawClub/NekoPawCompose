@@ -77,20 +77,31 @@ fun BookCase(helloViewModel: HelloViewModel = HelloViewModel.ins) {
     var editingText by remember { mutableStateOf("") }
 
     Scaffold(
+        floatingActionButtonPosition = FabPosition.Center,
         floatingActionButton = {
             var marginBottom by remember { mutableStateOf(0.dp) }
             Row(
-                Modifier.padding(bottom = marginBottom).fillMaxWidth(0.9F).background(Color(0xAF000000)),
+                Modifier.padding(bottom = marginBottom).fillMaxWidth(0.8F)
+                    .drawBehind {
+                        drawRoundRect(Color(0xAF888888), cornerRadius = CornerRadius(50F))
+                    },
                 Arrangement.SpaceAround,
                 Alignment.CenterVertically
             ) {
                 val barHeight = 36.dp
-                Icon(Icons.Outlined.AccountCircle, null, Modifier.size(barHeight))
+                Icon(
+                    Icons.Outlined.AccountCircle, null,
+                    Modifier.align(Alignment.CenterVertically).padding(4.dp).size(28.dp),
+                )
                 BasicTextField(
                     editingText,
                     onValueChange = { editingText = it },
-                    modifier = Modifier.background(Color(0xDFFFFFFF))
-                        .border(1.dp, Color(0xFF000000)).height(barHeight),
+                    modifier = Modifier.weight(1F)
+                        .padding(4.dp, 8.dp)
+                        .preferredHeight(40.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color(0xDFFFFFFF))
+                        .padding(start = 8.dp, top = 10.dp, end = 8.dp),
                     keyboardOptions = KeyboardOptions(
                         KeyboardCapitalization.None,
                         true,
@@ -108,9 +119,10 @@ fun BookCase(helloViewModel: HelloViewModel = HelloViewModel.ins) {
                     },
                     singleLine = true
                 )
-                Icon(Icons.Filled.Clear, null, Modifier.size(barHeight).clickable {
-                    editingText = ""
-                })
+                Icon(Icons.Filled.Clear, null,
+                    Modifier.align(Alignment.CenterVertically).padding(4.dp).size(28.dp).clickable {
+                        editingText = ""
+                    })
             }
         },
         bottomBar = {
