@@ -17,29 +17,28 @@ fun HomePage(viewModel: HomeViewModel = HomeViewModel.ins) {
                 Icon(Icons.Outlined.Search, null)
             }
         },
-        floatingActionButtonPosition = viewModel.fabPosition,
-        bodyContent = {
-            Column(modifier = Modifier.padding(10.dp)) {
-                Row {
-                    Text(text = "暗色模式")
-                    Switch(
-                        checked = viewModel.darkTheme,
-                        onCheckedChange = {
-                            viewModel.changeDarkTheme(it)
-                        }
-                    )
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-                Row {
-                    Text(text = "搜索键位置")
-                    Switch(
-                        checked = viewModel.fabPosition == FabPosition.End,
-                        onCheckedChange = {
-                            viewModel.changeFabPosition(if (it) FabPosition.End else FabPosition.Center)
-                        }
-                    )
-                }
+        floatingActionButtonPosition = viewModel.fabPosition
+    ) {
+        Column(modifier = Modifier.padding(10.dp)) {
+            Row {
+                Text(text = "暗色模式")
+                Switch(
+                    checked = viewModel.darkTheme,
+                    onCheckedChange = {
+                        viewModel.changeDarkTheme(it)
+                    }
+                )
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Row {
+                Text(text = "搜索键位置")
+                Switch(
+                    checked = viewModel.fabPosition == FabPosition.End,
+                    onCheckedChange = {
+                        viewModel.changeFabPosition(if (it) FabPosition.End else FabPosition.Center)
+                    }
+                )
             }
         }
-    )
+    }
 }

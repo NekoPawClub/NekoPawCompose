@@ -1,13 +1,10 @@
 package com.nekopawclub.nekopaw.ui
 
-import androidx.annotation.ContentView
-import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -21,20 +18,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.SoftwareKeyboardController
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.window.Popup
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.*
 import com.nekopawclub.nekopaw.R
+import androidx.compose.foundation.text.BasicTextField as BasicTextField1
 
 class HelloViewModel : ViewModel() {
     companion object {
@@ -93,8 +86,8 @@ fun BookCase(helloViewModel: HelloViewModel = HelloViewModel.ins) {
                     Icons.Outlined.AccountCircle, null,
                     Modifier.align(Alignment.CenterVertically).padding(4.dp).size(28.dp),
                 )
-                BasicTextField(
-                    editingText,
+                BasicTextField1(
+                    value = editingText,
                     onValueChange = { editingText = it },
                     modifier = Modifier.weight(1F)
                         .padding(4.dp, 8.dp)
@@ -111,17 +104,12 @@ fun BookCase(helloViewModel: HelloViewModel = HelloViewModel.ins) {
                     keyboardActions = KeyboardActions(
                         onSearch = { println("这里是测试内容: $editingText") }
                     ),
-                    onTextLayout = {
-
-                    },
-                    onTextInputStarted = {
-                        marginBottom = 300.dp
-                    },
                     singleLine = true
                 )
                 Icon(Icons.Filled.Clear, null,
                     Modifier.align(Alignment.CenterVertically).padding(4.dp).size(28.dp).clickable {
                         editingText = ""
+                        marginBottom = 0.dp
                     })
             }
         },
